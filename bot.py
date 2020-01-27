@@ -1,6 +1,5 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import telegram, logging
-import redis
 import os
 import telebot
 
