@@ -31,9 +31,16 @@ def display(update, context):
 
 def welcome(update, context):
     try:
+        # gets the username to tag new member in the welcome message
+        user_id = "@" + update.message.new_chat_members[0].username
+    except Exception:
+        # user has no @
+        user_id = update.message.new_chat_members[0].first_name
+
+    try:
         # when someone enters the group, message is sent by bot
-        update.message.reply_text(context.chat_data[0])
-    except KeyError:
+        update.message.reply_text(user_id + "\n\n" + context.chat_data[0])
+    except Exception:
         # if message not set
         return
 
